@@ -29,7 +29,7 @@ namespace OrderingNumbersGame
 
 		// Using a DependencyProperty as the backing store for Size.  This enables animation, styling, binding, etc...
 		public static readonly DependencyProperty SizeProperty =
-			DependencyProperty.Register("Size", typeof(string), typeof(MainWindow), new PropertyMetadata("2"));
+			DependencyProperty.Register("Size", typeof(string), typeof(MainWindow), new PropertyMetadata("4"));
 
 
 		public MainWindow()
