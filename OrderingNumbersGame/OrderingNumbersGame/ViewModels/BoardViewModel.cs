@@ -1,4 +1,5 @@
 ﻿using OrderingNumbersGame.Models;
+using OrderingNumbersGame.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,35 +8,41 @@ using System.Threading.Tasks;
 
 namespace OrderingNumbersGame.ViewModels
 {
-    public class BoardViewModel
-    {
-        private Board _board;
+	public class BoardViewModel : NotificationObject
+	{
+		private int _size;
+		private Board _board;
 
-        private int _size;
+		public Board Board
+		{
+			get => _board;
+			set { _board = value; OnPropertyChanged(() => Board); }
+		}
 
-        public int Size
-        {
-            get { return _size; }
-            set
-            {
-                _size = value;
-            }
-        }
+		public int Size
+		{
+			get { return _size; }
+			set
+			{
+				_size = value; OnPropertyChanged(() => Size);
+			}
+		}
 
-        public BoardViewModel(int size)
-        {
-            _board = new Board(size);
-        }
 
-        public void Shuffle()
-        {
-            _board.Shuffle();
-        }
+		public BoardViewModel(int size)
+		{
+			Board = new Board(size);
+		}
 
-        internal void TryMoveSelectedCellToEmptyCell(int xSource, int ySource)
-        {
-            _board.TryMoveSelectedCellToEmptyCell(xSource, ySource);
+		public void Shuffle()
+		{
+			Board.Shuffle();
+		}
 
-        }
-    }
+		internal void TryMoveSelectedCellToEmptyCell(int xSource, int ySource)
+		{
+			// Board.TryMoveSelectedCellToEmptyCell(xSource, ySource);
+
+		}
+	}
 }

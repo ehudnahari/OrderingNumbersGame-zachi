@@ -16,24 +16,33 @@ using System.Windows.Shapes;
 
 namespace OrderingNumbersGame
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow
+	{
+		public string Size
+		{
+			get { return (string)GetValue(SizeProperty); }
+			set { SetValue(SizeProperty, value); }
+		}
 
-        public MainWindow()
-        {
-            InitializeComponent();
+		// Using a DependencyProperty as the backing store for Size.  This enables animation, styling, binding, etc...
+		public static readonly DependencyProperty SizeProperty =
+			DependencyProperty.Register("Size", typeof(string), typeof(MainWindow), new PropertyMetadata("2"));
 
-        }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
-        {
-            var gameViewModel= new GameViewModel();
-            DataContext = gameViewModel;
-            gameViewModel.StartGame(int.Parse(sizeTextBox.Text));
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
-        }
-    }
+		private void StartButton_Click(object sender, RoutedEventArgs e)
+		{
+			var gameViewModel = new GameViewModel(int.Parse(Size));
+			DataContext = gameViewModel;
+			//gameViewModel.StartGame();
+
+		}
+	}
 }
