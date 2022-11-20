@@ -42,7 +42,7 @@ namespace OrderingNumbersGame
 			var gameViewModel = new GameViewModel(int.Parse(Size));
 			DataContext = gameViewModel;
 			//gameViewModel.StartGame();
-
+			 
 		}
 	}
 }
